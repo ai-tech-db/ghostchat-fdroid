@@ -1,0 +1,88 @@
+# ═══════════════════════════════════════════════════════════════════════
+# GhostChat — .gitignore
+# ═══════════════════════════════════════════════════════════════════════
+
+# ── Secrets (MAI committare) ────────────────────────────────────────────
+android/key.properties
+*.jks
+*.keystore
+Password*
+password*
+secret*
+*.pem
+*.p12
+
+# ── Backup file ─────────────────────────────────────────────────────────
+*.bak
+*.bak.*
+*.old
+*.orig
+*~
+
+# ── Flutter/Dart ────────────────────────────────────────────────────────
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+build/
+**/doc/api/
+**/ios/Flutter/.last_build_id
+
+# ── Android ─────────────────────────────────────────────────────────────
+android/.gradle/
+android/app/build/
+android/app/.cxx/
+android/app/debug/
+android/app/profile/
+android/app/release/
+android/local.properties
+android/key.properties
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+
+# ── Rust ────────────────────────────────────────────────────────────────
+rust/cloudflare-quick-tunnel-rs/target/
+target/
+Cargo.lock.bak
+
+# ── IDE ─────────────────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# ── OS ──────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Logs ────────────────────────────────────────────────────────────────
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ── Symbolication / Obfuscation ─────────────────────────────────────────
+app.*.symbols
+app.*.map.json
+
+# ── Temp ────────────────────────────────────────────────────────────────
+*.tmp
+*.temp
+*.swp
+*.swo
+tmp/
+temp/

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#090D16">
+  <title>GhostChat</title>
+  <link rel="stylesheet" href="style.css">
+  <style>body{visibility:hidden}body.i18n-ready{visibility:visible}</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="bg-glow bg-glow-1"></div>
+<div class="bg-glow bg-glow-2"></div>
+
+<!-- ══ JOIN ══ -->
+<section id="screen-join" class="screen active">
+  <div class="card">
+    <div class="logo-wrap">
+      <div class="logo">&#128123;</div>
+      <h1 class="title">GHOSTCHAT</h1>
+      <p class="tagline" data-i18n="tagline">Entri. Parli. Svanisci.</p>
+    </div>
+
+    <div class="field">
+      <label for="input-token" data-i18n="codeInvite">CODICE INVITO</label>
+      <input
+        id="input-token"
+        type="text"
+        placeholder="GHST-XXXX-XXXX"
+        autocomplete="off"
+        spellcheck="false"
+        maxlength="64"
+        dir="ltr">
+    </div>
+
+    <div class="field">
+      <label for="input-passphrase" data-i18n="passphrase">PASSPHRASE</label>
+      <div class="passphrase-wrap">
+        <input
+          id="input-passphrase"
+          type="password"
+          placeholder="parola1-parola2-parola3-..."
+          autocomplete="off"
+          spellcheck="false"
+          maxlength="200"
+          data-i18n-placeholder="passphrasePlaceholder">
+        <button id="btn-toggle-pass" class="btn-toggle-pass" type="button" title="Mostra/nascondi">&#128065;</button>
+      </div>
+      <p class="field-hint" data-i18n="passphraseHint">
+        La passphrase ti è stata comunicata <strong>separatamente</strong> dal link.
+        Senza di essa i messaggi sono incomprensibili.
+      </p>
+    </div>
+
+    <button id="btn-join" class="btn-primary">
+      <span data-i18n="joinButton">ENTRA NELLA SESSIONE</span>
+    </button>
+
+    <p id="join-error" class="error-msg hidden"></p>
+
+    <div class="footer-note">
+      <span class="pulse-dot"></span>
+      <span data-i18n="footerNote">End-to-end encrypted &middot; Sessione effimera</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CHAT ══ -->
+<section id="screen-chat" class="screen">
+  <header class="topbar">
+    <div class="topbar-left">
+      <span class="ghost-mini">&#128123;</span>
+      <div>
+        <div class="room-title-row">
+          <span class="room-title" data-i18n="roomTitle">GHOST ROOM</span>
+          <span class="brand-tag">by AI-Tech-DB</span>
+        </div>
+        <div class="room-sub" id="participants-count">0 <span data-i18n="participants">partecipanti</span></div>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <span class="status-dot" id="conn-status"></span>
+      <button id="btn-leave" class="btn-icon" title="Esci" data-i18n-title="leaveTitle">&#10005;</button>
+    </div>
+  </header>
+
+  <div id="participants-strip" class="participants-strip"></div>
+
+  <main id="messages" class="messages"></main>
+
+  <div id="typing-indicator" class="typing-bar hidden">
+    <span class="typing-dot"></span>
+    <span class="typing-dot"></span>
+    <span class="typing-dot"></span>
+    <span id="typing-label" class="typing-label" data-i18n="typingLabel">qualcuno sta scrivendo&hellip;</span>
+  </div>
+
+  <footer class="composer">
+    <button id="btn-stickers" class="btn-icon" title="Sticker">&#9786;</button>
+    <input
+      id="input-message"
+      type="text"
+      placeholder="Scrivi un messaggio&hellip;"
+      autocomplete="off"
+      maxlength="4000"
+      data-i18n-placeholder="messagePlaceholder"
+      disabled>
+    <button id="btn-send" class="btn-send" title="Invia" data-i18n-title="sendTitle" disabled>&#10148;</button>
+  </footer>
+
+  <div id="sticker-panel" class="sticker-panel hidden">
+    <div class="sticker-panel-head">
+      <span data-i18n="stickerTitle">STICKER</span>
+      <button id="btn-stickers-close" class="btn-icon">&#10005;</button>
+    </div>
+    <div id="sticker-grid" class="sticker-grid">
+      <div class="sticker-empty" data-i18n="stickerEmpty">Catalogo in arrivo</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SESSIONE TERMINATA ══ -->
+<section id="screen-ended" class="screen">
+  <div class="card">
+    <div class="logo-wrap">
+      <div class="logo">&#128128;</div>
+      <h1 class="title" data-i18n="sessionEnded">SESSIONE TERMINATA</h1>
+      <p class="tagline" id="ended-reason" data-i18n="endedReason">Il creatore ha chiuso la stanza.</p>
+    </div>
+    <button id="btn-new" class="btn-primary" onclick="location.reload()">
+      <span data-i18n="newSession">NUOVA SESSIONE</span>
+    </button>
+  </div>
+</section>
+
+<script src="strings_web.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

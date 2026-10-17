@@ -1,0 +1,94 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  CARGO_TERM_COLOR: always
+  RUSTFLAGS: -D warnings
+
+jobs:
+  # ── Fast checks: fmt + clippy + build on the default toolchain ──────────────
+  check:
+    name: fmt + clippy + build (ubuntu)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - uses: Swatinem/rust-cache@v2
+      - name: cargo fmt
+        run: cargo fmt --all -- --check
+      - name: cargo clippy
+        run: cargo clippy --all-targets --all-features -- -D warnings
+      - name: cargo build
+        run: cargo build --all-targets
+
+  # ── Unit tests across the platforms we ship for ─────────────────────────────
+  test:
+    name: test (${{ matrix.os }} / ${{ matrix.rust }})
+    needs: check
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            rust: stable
+          - os: ubuntu-latest
+            rust: 1.86  # MSRV
+          - os: macos-latest
+            rust: stable
+          - os: windows-latest
+            rust: stable
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      # Note: no capnp install — bindings are pre-generated under
+      # src/proto_gen/ and shipped with the crate.
+      #
+      # We use actions-rust-lang/setup-rust-toolchain (not dtolnay's)
+      # because macOS-latest runners ship Homebrew rust at
+      # /opt/homebrew/bin/cargo that wins the PATH race against
+      # ~/.cargo/bin/cargo from the toolchain we install. The
+      # rust-lang action prepends ~/.cargo/bin to $GITHUB_PATH and
+      # also sets the rustup default explicitly, so `cargo test`
+      # routes to the right binary on every supported runner.
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
+        with:
+          toolchain: ${{ matrix.rust }}
+      - name: Sanity check
+        run: |
+          which cargo
+          cargo --version
+          rustc --version
+      - name: cargo test --lib
+        run: cargo test --lib --all-features
+      - name: cargo test --doc
+        run: cargo test --doc --all-features
+
+  # ── Cross-compile coverage for the targets nexo-rs ships ────────────────────
+  cross:
+    name: cross (${{ matrix.target }})
+    needs: check
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        target:
+          - x86_64-unknown-linux-musl
+          - aarch64-unknown-linux-gnu
+          - aarch64-unknown-linux-musl
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+      - name: Install cross
+        run: cargo install cross --locked
+      - uses: Swatinem/rust-cache@v2
+      - name: cargo build --target ${{ matrix.target }}
+        run: cross build --target ${{ matrix.target }}

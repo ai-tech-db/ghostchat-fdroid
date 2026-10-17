@@ -1,0 +1,14 @@
+GhostChat is an anonymous, end-to-end encrypted, ephemeral chat.
+
+The Android phone itself becomes the server: the app runs a local HTTP/WebSocket server, exposes it to the internet via Cloudflare Quick Tunnel, and generates an E2EE passphrase and 3 invite codes. Participants open the link in any browser, enter the passphrase, and chat.
+
+When the app is closed, the session vanishes: no messages stored, no logs, no accounts.
+
+Features:
+- End-to-end encryption (AES-GCM 256, PBKDF2 250k, ECDSA P-256)
+- Forward secrecy per message (HKDF)
+- Multi-language UI (IT/EN/ES)
+- Foreground Service for background survival
+- FLAG_SECURE (blocks screenshots)
+
+Technical note: Cloudflared (the official Go client) is broken on Android without root. GhostChat uses a forked pure-Rust QUIC client with JNI bindings and a custom DoH resolver to bypass OEM DNS filtering. No root, no Termux, no VPS.
