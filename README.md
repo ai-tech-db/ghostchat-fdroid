@@ -270,13 +270,13 @@ You are free to:
 - ✅ Use commercially
 - ✅ Modify
 - ✅ Distribute
-- ✅ Sublicense
-- ✅ Sell
+- ✅ Use privately
 
 Provided you:
-- 📝 Include the license and NOTICE
+- 📝 Disclose the source code (if you distribute modified versions)
+- 📝 License your modifications under GPL-3.0
+- 📝 Include the license and copyright notice
 - 📝 State significant changes
-- 📝 Preserve attributions
 
 ---
 
