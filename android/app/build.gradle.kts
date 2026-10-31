@@ -14,6 +14,11 @@ if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(FileInputStream(keystorePropertiesFile))
 }
 
+// ── F-Droid: Esclude Google Play Core (non usiamo deferred components) ──
+configurations.all {
+    exclude(group = "com.google.android.play", module = "core")
+}
+
 android {
     namespace = "com.aitechdb.ghostchat"
     compileSdk = flutter.compileSdkVersion
@@ -59,8 +64,13 @@ android {
             } else {
                 signingConfigs.getByName("debug")
             }
-            isMinifyEnabled = false
-            isShrinkResources = false
+            // F-Droid: attiva R8 per rimuovere il codice inutilizzato (incluso Play Core)
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 
