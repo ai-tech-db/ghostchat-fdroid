@@ -28,7 +28,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.aitechdb.ghostchat"
+        applicationId = "io.github.aitechdb.ghostchat"
         minSdk = flutter.minSdkVersion
         targetSdk = 33
         versionCode = flutter.versionCode
