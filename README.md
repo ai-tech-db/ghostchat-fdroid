@@ -266,17 +266,10 @@ See the LICENSE file for the full text.
 
 Third-party components (like the Rust library `cloudflare-quick-tunnel-rs`) are licensed under their respective licenses (Apache-2.0/MIT). See the NOTICE file for details.
 
-You are free to:
-- ✅ Use commercially
-- ✅ Modify
-- ✅ Distribute
-- ✅ Use privately
-
-Provided you:
-- 📝 Disclose the source code (if you distribute modified versions)
-- 📝 License your modifications under GPL-3.0
-- 📝 Include the license and copyright notice
-- 📝 State significant changes
+**What this means in practice:**
+- You can use GhostChat for any purpose, including commercial use.
+- If you distribute a modified version, you must make the source code available under the GPL-3.0.
+- You cannot take this code and turn it into a closed-source, proprietary product.
 
 ---
 
