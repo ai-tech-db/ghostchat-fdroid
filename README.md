@@ -240,7 +240,7 @@ ghostchat/
       models/session.dart
   rust/
     cloudflare-quick-tunnel-rs/  # Fork of the Rust tunnel
-  LICENSE                        # Apache 2.0
+  LICENSE                        # GPL-3.0-or-later
   NOTICE                         # Third-party attributions
   SECURITY.md                    # Threat model
   README.md                      # This file
@@ -261,8 +261,10 @@ See NOTICE for full attributions.
 
 ## License
 
-Licensed under the **Apache License, Version 2.0**.
-See LICENSE for the full text.
+This project is licensed under the **GNU General Public License v3.0 (GPL-3.0-or-later)**.
+See the LICENSE file for the full text.
+
+Third-party components (like the Rust library `cloudflare-quick-tunnel-rs`) are licensed under their respective licenses (Apache-2.0/MIT). See the NOTICE file for details.
 
 You are free to:
 - ✅ Use commercially
