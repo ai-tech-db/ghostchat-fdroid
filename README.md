@@ -294,4 +294,4 @@ See CONTRIBUTING.md for guidelines.
 
 **GhostChat** — You enter. You chat. You disappear.
 
-*By AI-Tech-DB*
+Made with ❤️ by AI-Tech-DB
