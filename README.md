@@ -292,6 +292,6 @@ See CONTRIBUTING.md for guidelines.
 
 ---
 
-**GhostChat** — Entri. Parli. Svanisci.
+**GhostChat** — You enter. You chat. You disappear.
 
 *By AI-Tech-DB*
