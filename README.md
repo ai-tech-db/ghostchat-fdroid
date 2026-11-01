@@ -1,5 +1,11 @@
 # GhostChat
 
+[![License: GPL-3.0](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Flutter](https://img.shields.io/badge/Flutter-3.35.7-02569B?logo=flutter)](https://flutter.dev)
+[![Platform](https://img.shields.io/badge/Platform-Android-green.svg)](https://www.android.com)
+[![Android](https://img.shields.io/badge/Android-13%20(API%2033)-3DDC84?logo=android)](https://www.android.com)
+[![Rust](https://img.shields.io/badge/Rust-1.86-000000?logo=rust)](https://www.rust-lang.org)
+
 **Anonymous, end-to-end encrypted, ephemeral chat** — built entirely on an Android phone. No accounts, no servers, no logs.
 
 GhostChat turns an Android device into a self-contained chat server:
