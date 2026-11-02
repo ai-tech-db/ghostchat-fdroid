@@ -87,7 +87,7 @@ Browser A, Browser B, Browser C
 
 | Layer | Technology |
 |---|---|
-| UI (host) | Flutter 3.27 (Dart) |
+| UI (host) | Flutter 3.35.7 (Dart) |
 | Bridge | Kotlin + JNI |
 | Tunnel | Rust (forked cloudflare-quick-tunnel-rs) |
 | DNS | hickory-resolver (DoH) |
